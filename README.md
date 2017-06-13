@@ -5,9 +5,6 @@
 * Get data about Power in ITP from the enertiv server
 * Try and make this data available on a website (realtime)
 
-Final Result
-![Final Result](//imgur.com/fBrYWuW)
-
 ## Why are we using Node ?
 
 ## How to install Node
