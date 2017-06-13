@@ -531,7 +531,6 @@ setInterval(function() {
 ```javascript
 var express = require('express'); // include the express library
 var server = express();           // create a server using express
-var message = "Hello Client!"
 
 // start the server:
 server.listen(8080);
@@ -540,7 +539,7 @@ server.use('/', express.static('public'));   // set a static file directory
 
 // send message to the client
 function handleRequest(request, response) {
-  response.send(message);         // send message to the client
+  response.send(clientData);         // send message to the client
   response.end();                 // close the connection
 }
 
