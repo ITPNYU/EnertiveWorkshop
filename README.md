@@ -5,6 +5,9 @@
 * Get data about Power in ITP from the enertiv server
 * Try and make this data available on a website (realtime)
 
+Final Result
+![Final Result](http://imgur.com/a/6cFSb)
+
 ## Why are we using Node ?
 
 ## How to install Node
@@ -22,11 +25,11 @@
 ```javascript
 
 var loginData = querystring.stringify({
-	'client_id':'abcd',
-	'client_secret': '1234abcd',
-	'grant_type': 'password',
-	'username': 'itpower',
-	'password': 'itpower123',
+  'client_id':'abcd',
+  'client_secret': '1234abcd',
+  'grant_type': 'password',
+  'username': 'itpower',
+  'password': 'itpower123',
 })
 
 console.log(loginData);
@@ -86,7 +89,7 @@ console.log(loginRequestOptions);
 var request = https.request(
   loginRequestOptions, function(response){
     console.log("Response is : " + response.statusCode)
-  });	// start it
+  }); // start it
 request.write(loginData); // add  body of  POST request
 request.end();
 
@@ -106,7 +109,7 @@ Response is : 200
 
 var accessToken;
 function saveToken(response) {
-  var result = '';		// string to hold the response
+  var result = '';    // string to hold the response
   // as each chunk comes in, add it to the result string:
   response.on('data', function (data) {
     result += data;
@@ -125,7 +128,7 @@ function saveToken(response) {
 
 ```javascript
 
-var request = https.request(loginRequestOptions, saveToken);	s
+var request = https.request(loginRequestOptions, saveToken);  s
 
 ```
 
@@ -148,11 +151,11 @@ var https = require('https');
 
 
 var loginData = querystring.stringify({
-	'client_id':'c99b7f5dec0d6a0f6178',
-	'client_secret': '575af139440e5ae453d6171d14efd8ce3a4f3005',
-	'grant_type': 'password',
-	'username': 'mmg542@nyu.edu',
-	'password': 'energyatitp',
+  'client_id':'c99b7f5dec0d6a0f6178',
+  'client_secret': '575af139440e5ae453d6171d14efd8ce3a4f3005',
+  'grant_type': 'password',
+  'username': 'mmg542@nyu.edu',
+  'password': 'energyatitp',
 })
 
 console.log(loginData);
@@ -173,13 +176,13 @@ var loginRequestOptions = {
 
 console.log(loginRequestOptions);
 
-var request = https.request(loginRequestOptions, saveToken);	// start it
+var request = https.request(loginRequestOptions, saveToken);  // start it
 request.write(loginData); // add  body of  POST request
 request.end();
 
 var accessToken;
 function saveToken(response) {
-  var result = '';		// string to hold the response
+  var result = '';    // string to hold the response
   // as each chunk comes in, add it to the result string:
   response.on('data', function (data) {
     result += data;
@@ -196,7 +199,7 @@ function saveToken(response) {
 
 ```
 
-###2) Get Data from the server
+### 2) Get Data from the server
 
 * Now that we are able to access the server,let's get some data from the server.
 * We need to create a new set of options for the second request.
@@ -268,7 +271,7 @@ function getClientInfo(path, token) {
 
 ```javascript
 
-		getClientInfo('/api/client/', accessToken);
+    getClientInfo('/api/client/', accessToken);
 
 ```
 
@@ -278,7 +281,7 @@ function getClientInfo(path, token) {
 
 ```javascript
 function saveToken(response) {
-  var result = '';		// string to hold the response
+  var result = '';    // string to hold the response
   // as each chunk comes in, add it to the result string:
   response.on('data', function (data) {
     result += data;
@@ -349,11 +352,11 @@ var https = require('https');
 
 
 var loginData = querystring.stringify({
-	'client_id':'c99b7f5dec0d6a0f6178',
-	'client_secret': '575af139440e5ae453d6171d14efd8ce3a4f3005',
-	'grant_type': 'password',
-	'username': 'mmg542@nyu.edu',
-	'password': 'energyatitp',
+  'client_id':'c99b7f5dec0d6a0f6178',
+  'client_secret': '575af139440e5ae453d6171d14efd8ce3a4f3005',
+  'grant_type': 'password',
+  'username': 'mmg542@nyu.edu',
+  'password': 'energyatitp',
 })
 
 console.log(loginData);
@@ -386,13 +389,13 @@ var dataRequestOptions = {
 
 console.log(loginRequestOptions);
 
-var request = https.request(loginRequestOptions, saveToken);	// start it
+var request = https.request(loginRequestOptions, saveToken);  // start it
 request.write(loginData); // add  body of  POST request
 request.end();
 
 var accessToken;
 function saveToken(response) {
-  var result = '';		// string to hold the response
+  var result = '';    // string to hold the response
   // as each chunk comes in, add it to the result string:
   response.on('data', function (data) {
     result += data;
@@ -435,7 +438,7 @@ function getClientInfo(path, token) {
 }
 ```
 
-###3) Getting realtime data
+### 3) Getting realtime data
 
 * We can also choose one equipment on the floor, and get its power consumption data in real time
 
@@ -504,7 +507,7 @@ fromTime.setMinutes(toTime.getMinutes() - durationInMinutes);
 
 ```javascript
 
-var request = https.request(loginRequestOptions, saveToken);	// start it
+var request = https.request(loginRequestOptions, saveToken);  // start it
 request.write(loginData); // add  body of  POST request
 request.end();
 
@@ -514,7 +517,7 @@ with the below code snippet.
 
 ```javascript
 setInterval(function() {
-  var request = https.request(httpsRequestOptions, saveToken);	// start it
+  var request = https.request(httpsRequestOptions, saveToken);  // start it
   request.write(loginData);                       // add  body of  POST request
   request.end();
   console.log('Hello');
@@ -523,6 +526,9 @@ setInterval(function() {
 ```
 
 * when you run `node client.js` now, you will see the data being sent every 10s/30s
+
+* ### **Checkpoint 3**
+
 ## Express
 * How to install Express?
 `$ npm install express`
@@ -531,6 +537,7 @@ setInterval(function() {
 ```javascript
 var express = require('express'); // include the express library
 var server = express();           // create a server using express
+var message = "Hello Client!"
 
 // start the server:
 server.listen(8080);
@@ -539,7 +546,7 @@ server.use('/', express.static('public'));   // set a static file directory
 
 // send message to the client
 function handleRequest(request, response) {
-  response.send(clientData);         // send message to the client
+  response.send(message);         // send message to the client
   response.end();                 // close the connection
 }
 
